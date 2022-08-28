@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const fileUpload= require('express-fileupload')
+const fileUpload= require('express-fileupload');
+const {StatusCodes}= require('http-status-codes')
 
 let startPath = path.join(__dirname, "public");
 
@@ -40,7 +41,15 @@ app.post('/upload', (req, res) => {
     })
 })
 
+app.get("/:blog", (req, res) => {
+    res.sendFile(path.join(startPath, "/site/blog.html"));
+})
 
+
+const status = StatusCodes.NOT_FOUND;
+app.use((req, res) => {
+    res.status(status);
+})
 
 
 

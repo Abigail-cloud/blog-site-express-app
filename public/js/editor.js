@@ -36,21 +36,21 @@ const uploadImage = (uploadFile, uploadType) => {
             }
         })
     } else{
-        alert("upload Image only");
+        alert("upload Image only"); //alert message
     }
 }
 
 const addImage = (imagepath, alt) => {
-    let curPos = articleFeild.selectionStart;
+    let curPosn = articleFeild.selectionStart;//cursor position
     let textToInsert = `\r![${alt}](${imagepath})\r`;
-    articleFeild.value = articleFeild.value.slice(0, curPos) + textToInsert + articleFeild.value.slice(curPos);
+    articleFeild.value = articleFeild.value.slice(0, curPosn) + textToInsert + articleFeild.value.slice(curPosn);
 }
 
 let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 publishBtn.addEventListener('click', () => {
     if(articleFeild.value.length && blogTitleField.value.length){
-        // generating id
+        // generate the id
         let letters = 'abcdefghijklmnopqrstuvwxyz';
         let blogTitle = blogTitleField.value.split(" ").join("-");
         let id = '';
@@ -60,7 +60,7 @@ publishBtn.addEventListener('click', () => {
 
         // setting up docName
         let docName = `${blogTitle}-${id}`;
-        let date = new Date(); // for published at info
+        let date = new Date(); // date for published at info
 
         //access firstore with db variable;
         db.collection("blogs").doc(docName).set({
