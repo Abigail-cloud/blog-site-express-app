@@ -45,6 +45,10 @@ app.get("/:blog", (req, res) => {
     res.sendFile(path.join(startPath, "/site/blog.html"));
 })
 
+app.get("/admin", (req, res) => {
+    res.sendFile(path.join(startPath, "/site/dashboard.html"));
+})
+
 
 const status = StatusCodes.NOT_FOUND;
 app.use((req, res) => {
