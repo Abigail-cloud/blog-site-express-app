@@ -40,14 +40,15 @@ app.post('/upload', (req, res) => {
         }
     })
 })
+app.get("/admin", (req, res) => {
+    res.sendFile(path.join(startPath, "/site/dashboard.html"));
+})
 
 app.get("/:blog", (req, res) => {
     res.sendFile(path.join(startPath, "/site/blog.html"));
 })
 
-app.get("/admin", (req, res) => {
-    res.sendFile(path.join(startPath, "/site/dashboard.html"));
-})
+
 
 
 const status = StatusCodes.NOT_FOUND;
@@ -57,7 +58,7 @@ app.use((req, res) => {
 
 
 
-const port = process.env.PORT ||3000;
+const port = process.env.PORT ||4000;
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`)
